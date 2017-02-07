@@ -7,13 +7,11 @@ The Macchiato Mini Synth by Zeppelin Design Labs is a nifty digital synthesizer 
 
 On this GitHub page, you can modify the original source code and propose changes to the Macchiato software. We may from time to time release updated and improved versions of the original software, or alternate versions with completely different functions and sounds. To successfully edit and compile the code in Arduino (the sketch files, ending in .ino), you will need to perform some considerable setup first, which we will cover in detail later, in the section PROGRAMMING THE MACCHIATO. On the other hand, you can just download new releases (the binary, or hex files, ending with .cpp.hex) and flash them to your Macchiato. This is pretty easy.
 
-The following notes are based on the Macchiato Quick Start Guide and Reference Manual by Zeppelin Design Labs, available for free download from www.zeppelindesignlabs.com/products/macchiato-mini-synth. The downloadable PDF is full of clickable hyperlinks which are not avaiable in this README document.
-
 ## FLASHING A BINARY TO YOUR MACCHIATO
 
 Look under the hood of your Macchiato cabinet. See that little cluster of six pins sticking up to the right of the Zeppelin logo? These are the In-System Programming (ISP) header pins that allow you to communicate with the microcontroller that runs your synth. You use an inexpensive device called a programmer that connects the ISP header to a USB port on your PC. This allows you to upload, or "flash", new control software to your synth.
 
-The microcontroller is the little square chip to the right of the ISP header. It is an Atmega 644pa microcontroller by Atmel. It belongs to a class of microcontrollers broadly called AVRs. (Atmel says AVR does not stand for anything in particular.) The actual program on the microcontroller is in the form of a “hex” file – a jumble of machine code that you and I cannot understand or unpack. Think of Cipher looking at the Matrix datastream. You can flash a new hex file to your Macchiato at any time, and then put back the original if you prefer.
+The microcontroller is the little square chip to the right of the ISP header. It is an Atmega 644pa microcontroller by Atmel. It belongs to a class of microcontrollers broadly called AVRs. (Atmel says AVR does not stand for anything in particular.) The actual program on the microcontroller is in the form of a "binary" or “hex” file – a jumble of machine code that you and I cannot understand or unpack. Think of Cipher looking at the Matrix datastream. You can flash a new hex file to your Macchiato at any time, and then put back the original if you prefer.
 
 To flash your synth, you will need the following:
 
@@ -22,7 +20,8 @@ To flash your synth, you will need the following:
 * A driver (software) to install on your computer, which enables it to recognize and communicate with the programmer. The programmer you buy should include detailed instructions for how to obtain and install this driver.
 * AVRDUDE (software) version 5.10. This is a free, simple command-line utility that sets up communication between your computer and your synth, and transfers (flashes) files to the microcontroller. Sparkfun has a fantastic tutorial explaining all this stuff. Find it here:
 https://learn.sparkfun.com/tutorials/pocket-avr-programmer-hookup-guide/using-avrdude
-The initial release of Macchiato was flashed using AVRDUDE version 5.10. Newer (higher) versions should work as well, but if you run into errors, try installing version 5.10. 
+The initial release of Macchiato was flashed using AVRDUDE version 5.10. Newer (higher) versions should work as well, but if you run into errors, try installing version 5.10.
+* A Macchiato hex file. See #6 below. 
 
 To flash a hex file:
 
@@ -37,7 +36,7 @@ C:\Users\Yourname\Desktop\
 
 5) Verify that AVRDUDE is functioning and that it can identify your programmer. Follow the general procedure described in the Sparkfun article, adapted to your particular programmer.
 
-6) Download the binary (hex) file you are interested in from this GitHub page, in the Macchiato-Control-Software folder, or from the Releases page. Place the hex file in the same folder as avrdude.exe.
+6) Download the binary (hex) file you are interested in from this GitHub page. You can navigate through the Macchiato-Mini-Synth repository to \Macchiato Control Software\ and look for files ending with .cpp.hex and download them individually; or go to the Releases page, pick a release that sounds promising, download the whole package, unpack it and find the .cpp.hex file.
 
 7) Plug the programmer into the synth. Turn your synth off, turn the volume control all the way down, and connect your synth to your computer via your programmer cable. The MISO pin #1 is the top-left pin as you look at your synth. This pin will probably be identified with a dot on your programmer cable. Be careful not to attach the cable backwards. Your programmer probably has an option to send power through to the synthesizer. Turn it on. It will be a tiny switch on the programmer labelled something like "POWER TARGET". 
 
@@ -79,7 +78,7 @@ The versions of Mozzi and Arduuino listed here work great together. Some newer v
 * Notepad++ or another text editor for working with program files
 https://notepad-plus-plus.org/download/v7.3.1.html
 
-* All the files and folders in the GitHub repository Macchiato-Mini-Synth/Macchiato Setup Files/. 
+* Macchiato-Mini-Synth v1.0.0 from this GitHub Releases page. This will include the folder Macchiato Setup Files\. 
 
 ### Let’s begin! 
 
@@ -93,7 +92,7 @@ Be patient. This process is a little tricky; it may take some experimenting, res
 
 4) Obtain and install the Mozzi library. Read the author’s release notes and installation instructions. Mozzi is a set of tools that fools an Arduino environment into handling audio signals, and tricks a microcontroller into behaving something like an oscillator. You will import the Mozzi tools into Arduino as a library.
 
-5) Download everything in the Zeppelin Design Labs Github repository Macchiato-Mini-Synth\Macchiato Setup Files\. Place it all in a convenient temporary folder somewhere on your computer. You will copy the files and folders to various places on your computer. You will make edits to some existing Arduino files.
+5) Download Macchiato-Mini-Synth v1.0.0 from the Github Releases page. Unpack it all into a convenient temporary folder somewhere on your computer. The folder \Macchiato Setup Files\ contains a bunch of files and folders that you will copy to various places on your computer. You will make edits to some existing Arduino files.
 
 6) Copy the MIDI folder from Macchiato Setup Files\ to Arduino\libraries\. This is a set of tools that enables Arduino to interpret data entering a pin from a MIDI device.
 
