@@ -129,3 +129,7 @@ Arduino\hardware\arduino\variants\.
 You are almost there! If Arduino is running, close it and then re-start it. Look in the pulldown menu Tools > Board >. Look for and select the entry "Atmega644PA @ 16MHz w/Arduino as ISP".
 
 ## TESTING
+
+Load a short sample sketch from the Mozzi github page and see if it will compile. Now load the Macchiato sketch and see if it will compile. If it does not, read the error messages carefully. They will likely reveal a missing or misplaced component somewhere. Compare the errors to these setup instructions. You will probably find you missed a step, or placed something in the wrong folder. Correct the error and try again until the Macchiato sketch compiles.
+
+Congratulations! You are now ready to familiarize yourself with the possibilities of the Mozzi library and to develope your own custom Macchiato. For terrific Mozzi support, join the mozzi-users Google group. If you wish, feel free to create a branch off the Master branch here on Github. Either tweak the code as-is for enhanced performance, or use the Macchiato as a hardware platform to develop a completely different instrument. You have thirteen keys, eight knobs and even a few extra pins for input. Find out what you can do with them, and share it with the world!
