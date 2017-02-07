@@ -1,7 +1,7 @@
 # Macchiato-Mini-Synth
 Mini Synth setup files, software sketches, executables, code development, new releases
 
-# INTRODUCTION
+## INTRODUCTION
 
 The Macchiato Mini Synth by Zeppelin Design Labs is a nifty digital synthesizer that fits in the palm of your hand. The control software was developed in the Arduino environment, incorporating the Mozzi Sound Synthesis library by Tim Barrass. The software runs on an AtMega 644PA microcontroller.
 
@@ -9,7 +9,7 @@ On this GitHub page, you can modify the original source code and propose changes
 
 The following notes are based on the Macchiato Quick Start Guide and Reference Manual by Zeppelin Design Labs, available for free download from www.zeppelindesignlabs.com/products/macchiato-mini-synth. The downloadable PDF is full of clickable hyperlinks which are not avaiable in this README document.
 
-# FLASHING A BINARY TO YOUR MACCHIATO
+## FLASHING A BINARY TO YOUR MACCHIATO
 
 Look under the hood of your Macchiato cabinet. See that little cluster of six pins sticking up to the right of the Zeppelin logo? These are the In-System Programming (ISP) header pins that allow you to communicate with the microcontroller that runs your synth. You use an inexpensive device called a programmer that connects the ISP header to a USB port on your PC. This allows you to upload, or "flash", new control software to your synth.
 
@@ -54,42 +54,78 @@ C:\Users\Yourname\Desktop\ avrdude -c usbtiny -p m644p -U flash:w:[filename].cpp
 Be sure the [filename] argument exactly matches the name of the hex file we sent you. AVRDUDE should erase the chip, read the new hex file, flash it to the chip, read it back off the chip, compare it to the original, and then announce that everything is OK and Thank you. 
 Unplug the synth from the programmer. Turn it on, turn up the volume, and check out your new instrument!
 
-# PROGRAMMING THE MACCHIATO
+## PROGRAMMING THE MACCHIATO
 
 The Macchiato Mini-Synth incorporates the Mozzi Sound Synthesis Library for Arduino by Tim Barrass. Mozzi and Macchiato are both covered by the Creative Commons / Attribution license. You are free to modify and redistribute the Macchiato software as long as you give proper credit to the contributing creators. We hope you will use this GitHub page as the place to collaborate on new Macchiato software.
 
-The Macchiato source code is posted in the folder Macciato Control Software. on the Zeppelin Design Labs Github page, both as an Arduino sketch (.ino file) and as a compiled hex file (.cpp.hex). We may from time to time publish updates, or even completely new code for a totally different synth to run on the same Macchiato hardware. You may develop your own Macchiato software and contribute it to our Github page. To upload a hex file is a fairly easy matter, and is discussed in the section “ISP Header; Flashing New Programs” above. To write, compile and flash your own code requires considerably more setup. Following is a guide to the process. 
+The Macchiato source code is posted in the folder Macciato Control Software. We encourage you to develop your own Macchiato software and submit it here for inclusion in future releases. To write and compile Macchiato sketches in the Arduino environment requires considerable setup. Following is a guide to the process. 
+
 NOTE: We assume you are already running Arduino; you are familiar with AVRDUDE; and you are familiar with coding in C++.
+
 WHAT YOU WILL NEED
-Here are the software versions we used to compile the original Macchiato software. Other versions may not be compatible: your sketch may not compile, or if it does, it may not run properly (or at all) on your Macchiato. The Zeppelin Design Labs Github page will have the latest versions and variants.
-Arduino IDE 1.0.5r2. Newer versions may need a configuration change to be compatible with Mozzi 1.0.2.
-AVRDUDE v 5.10 or later (usually bundled with Arduino.)
-Mozzi library v1.0.2 added to Arduino. The listed versions of Mozzi and Arduuino work great together. Newer versions have compatibility issues. See the Zeppelin Design Labs Github page for latest compatibility news.
-Notepad++ or another text editor for working with program files
-All the files in the Macchiato-Setupfiles repository on Github -- except files beginning with .git! Download all the files and folders into one new, temporary folder in a convenient location on your workstation.
-Let’s begin! 
-Be patient. This process is a little tricky; it may take a little experimenting, research and troubleshooting to get it running.
-If you are running Arduino version higher than 1.0.5, you will need to edit a configuration file to force the compiler to optimize for speed instead of size. See instructions here.
-If your installation of Arduino includes AVRDUDE version 5.10 or higher, skip to 3. Otherwise, install / upgrade to the latest version of AVRDUDE here. Follow the author’s instructions and guidance.
-If you do not already have a good C++ editor, treat yourself to Notepad++. This is the software we used to edit the Macchiato sketches.
-Obtain and install the Mozzi library. Read the author’s release notes and installation instructions.
-Obtain Macchiato_Setup_Files.zip from Zeppelin Design Labs. Unpack it somewhere temporary on your computer. There’s a bunch of stuff in there that you will copy to various places on your computer. You will make edits to some existing Arduino files.
-Copy the MIDI folder from Macchiato_Setup_Files to Arduino\libraries\.
-Navigate to Arduino\libraries\Mozzi-1.0.x\mozzi_config.h and open for edit in Notepad++.
+
+Here are the software versions we used to compile the original Macchiato software, release v1_161122. Other versions may not be compatible: your sketch may not compile, or if it does, it may not run properly (or at all) on your Macchiato. PLEASE LET US KNOW if you discover specific version compatibilities or incompatibilities so we can develop a compatibility chart!
+
+* Arduino IDE 1.0.5r2. 
+https://www.arduino.cc/en/main/OldSoftwareReleases 
+Newer versions may need a configuration change to be compatible with Mozzi 1.0.2. See Mozzi notes below.
+* AVRDUDE v 5.10 or later (usually bundled with Arduino.) If you are using a newer version but run into persistent errors, try installing this version. It worked for us.
+http://download.savannah.gnu.org/releases/avrdude/?C=M;O=A
+
+* Mozzi library v1.0.2.
+https://github.com/sensorium/Mozzi/releases
+The versions of Mozzi and Arduuino listed here work great together. Some newer versions have known compatibility issues. Read the Mozzi release notes carefully when choosing a Mozzi version to use with your Arduino version. We will publish a compatibility chart as we receive data, so let us hear from you!
+
+* Notepad++ or another text editor for working with program files
+https://notepad-plus-plus.org/download/v7.3.1.html
+
+* All the files and folders in the GitHub repository Macchiato-Mini-Synth/Macchiato Setup Files/. 
+
+### Let’s begin! 
+
+Be patient. This process is a little tricky; it may take some experimenting, research and troubleshooting to get it running.
+
+1) If you are running Arduino version higher than 1.5, you will need to edit a configuration file to force the compiler to optimize for speed instead of size. See instructions on the Mozzi Github page. http://sensorium.github.io/Mozzi/blog/2016/11/26/tweak-for-faster-code/
+
+2) If your installation of Arduino includes AVRDUDE version 5.10 or higher, skip to 3. Otherwise, install / upgrade to the latest version of AVRDUDE. Follow the author’s instructions and guidance.
+
+3) If you do not already have a good C++ editor, treat yourself to Notepad++. This is the software we used to edit the Macchiato sketches.
+
+4) Obtain and install the Mozzi library. Read the author’s release notes and installation instructions. Mozzi is a set of tools that fools an Arduino environment into handling audio signals, and tricks a microcontroller into behaving something like an oscillator. You will import the Mozzi tools into Arduino as a library.
+
+5) Download everything in the Zeppelin Design Labs Github repository Macchiato-Mini-Synth\Macchiato Setup Files\. Place it all in a convenient temporary folder somewhere on your computer. You will copy the files and folders to various places on your computer. You will make edits to some existing Arduino files.
+
+6) Copy the MIDI folder from Macchiato Setup Files\ to Arduino\libraries\. This is a set of tools that enables Arduino to interpret data entering a pin from a MIDI device.
+
+7) Navigate to the file Arduino\libraries\sensorium_Mozzi-1.x.x\mozzi_config.h and open it for edit in Notepad++.
 Uncomment the line “#define AUDIO_MODE HIFI” (delete the “//”). 
 Comment out the line “#define AUDIO_MODE STANDARD_PLUS” (insert “//” at the start of the line). 
 Save mozzi_config.h.
-Navigate to Arduino\libraries\Mozzi-1.0.x\config\known_16bit_timers.h. Open for edit in Notepad++. 
-In Macchiato_Setup_Files, open the file Add_644p_to_timers.txt. Copy and paste its contents into known_16bit_timers.h, near the end, just above the pair of #endif. 
-Save known_16bit_timers.h.
-Copy the file ramp2048_int8.h from Macchiato_Setup_Files to 
-Arduino\libraries\Mozzi-1.0.x\tables\.
-Navigate to Arduino\hardware\arduino\boards.txt and open the file for edit in Notepad++.
-In Macchiato_Setup_Files, open the file Atmel_Microcontroller_addition.txt in Notepad++. Copy and paste the file contents to the end of the boards.txt file. Save the boards.txt file. 
-Copy the folder 1284p from Macchiato_Setup_Files to 
-Arduino\hardware\arduino\bootloaders\.
-Copy the file pins_arduino.h from Macchiato_Setup_Files to 
-Arduino\hardware\arduino\variants\.
-You are almost there. It may be helpful to reboot your computer at this point.
-Run Arduino. In the BOARDS pulldown menu, set the board to “Atmega644p @ 16MHz w/Arduino as ISP”.
+This changes the Mozzi system from Standard 8-bit audio mode to an enhanced HiFi mode. In Standard mode the microcontroller outputs an 8-bit signal on one output pin. In HiFi mode, it uses two output pins whose signals are merged downstream, to provide a much higher resolution signal. Clever, eh? You would suppose that's just like a 16-bit output signal, but actually it is customary to bit-shift the output to 14 bits, to provide a little headroom. 
 
+8) Navigate to the file Arduino\libraries\sensorium_Mozzi-1.x.x\config\known_16bit_timers.h. Open the file for edit in Notepad++. 
+
+9) In Macchiato_Setup_Files\, open the file Add_644pa_to_timers.txt. Copy and paste its contents into known_16bit_timers.h, near the end, just above the pair of #endif. 
+Save known_16bit_timers.h.
+Mozzi does not natively support the AtMega 644PA microcontroller. This edit tells Mozzi where to find the timer pins on the 644PA.
+
+10) Copy the file ramp512_int8.h from Macchiato_Setup_Files\ to 
+Arduino\libraries\sensorium_Mozzi-1.x.x\tables\.
+
+(Mozzi creates sound waves by keeping track of what time it is, then looking up the amplitude of a waveform in a simple table of numbers. Silence = 0, maximum amplitude = 127. Mozzi comes standard with several different waveform tables in a variety of resolutions. A sawtooth waveform comes standard, in which the amplitude rises steadily from silence to maximum over one cycle: think "whooP! whooP! whooP!". This custom Ramp waveform is just a backwards Saw: the amplitude falls steadily from maximum to silence over one cycle: think "Pow! Pow! Pow!". Used as an audio waveform, the two shapes sound about the same, but used as a low frequency oscillator, they create dramatically different effects. This file drives the Ramp effect on the LFO Shape control, knob #5.)
+
+The remaining steps add configuration information to your Arduino install so it will support a few more AtMega boards, including the 644PA at 16MHz. Taken together, they configure the 644PA specifically to run the Macchiato software. 
+
+11) Navigate to the file Arduino\hardware\arduino\boards.txt and open the file for edit in Notepad++.
+
+12) In Macchiato_Setup_Files\, open the file Atmel_Microcontroller_addition.txt in Notepad++. Copy and paste the file contents to the end of the boards.txt file. Save the boards.txt file. 
+
+13) Copy the folder 1284p from Macchiato_Setup_Files\ to 
+Arduino\hardware\arduino\bootloaders\.
+
+14) Copy the file pins_arduino.h from Macchiato_Setup_Files\ to 
+Arduino\hardware\arduino\variants\.
+
+You are almost there! If Arduino is running, close it and then re-start it. Look in the pulldown menu Tools > Board >. Look for and select the entry "Atmega644PA @ 16MHz w/Arduino as ISP".
+
+## TESTING
