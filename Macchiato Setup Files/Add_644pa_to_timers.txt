@@ -1,0 +1,8 @@
+
+//For the ATmega644PA
+//
+#elif defined(__AVR_ATmega644PA__)
+	#define TIMER1_A_PIN	5
+	#define TIMER1_B_PIN	4
+	#define TIMER1_ICP_PIN	6
+	#define TIMER1_CLK_PIN	9
