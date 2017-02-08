@@ -59,7 +59,7 @@ Unplug the synth from the programmer. Turn it on, turn up the volume, and check 
 
 The Macchiato Mini-Synth incorporates the Mozzi Sound Synthesis Library for Arduino by Tim Barrass. Mozzi and Macchiato are both covered by the Creative Commons / Attribution license. You are free to modify and redistribute the Macchiato software as long as you give proper credit to the contributing creators. We hope you will use this GitHub page as the place to collaborate on new Macchiato software.
 
-The Macchiato source code is posted in the folder Macciato Control Software. We encourage you to develop your own Macchiato software and submit it here for inclusion in future releases. To write and compile Macchiato sketches in the Arduino environment requires considerable setup. Following is a guide to the process. 
+The Macchiato source code (file suffix .ino) is posted here on Github in the folder Macchiato Control Software. We encourage you to develop your own Macchiato software and submit it here for inclusion in future releases. To write and compile Macchiato sketches in the Arduino environment requires considerable setup. Following is a guide to the process. 
 
 NOTE: We assume you are already running Arduino; you are familiar with AVRDUDE; and you are familiar with coding in C++.
 
