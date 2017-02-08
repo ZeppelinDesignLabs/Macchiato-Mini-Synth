@@ -11,7 +11,7 @@ On this GitHub page, you can modify the original source code and propose changes
 
 Look under the hood of your Macchiato cabinet. See that little cluster of six pins sticking up to the right of the Zeppelin logo? These are the In-System Programming (ISP) header pins that allow you to communicate with the microcontroller that runs your synth. You use an inexpensive device called a programmer that connects the ISP header to a USB port on your PC. This allows you to upload, or "flash", new control software to your synth.
 
-The microcontroller is the little square chip to the right of the ISP header. It is an Atmega 644pa microcontroller by Atmel. It belongs to a class of microcontrollers broadly called AVRs. (Atmel says AVR does not stand for anything in particular.) The actual program on the microcontroller is in the form of a "binary" or “hex” file – a jumble of machine code that you and I cannot understand or unpack. Think of Cipher looking at the Matrix datastream. You can flash a new hex file to your Macchiato at any time, and then put back the original if you prefer.
+The microcontroller is the little square chip to the right of the ISP header. It is an ATmega644PA microcontroller by Atmel. It belongs to a class of microcontrollers broadly called AVRs. (Atmel says AVR does not stand for anything in particular.) The actual program on the microcontroller is in the form of a "binary" or “hex” file – a jumble of machine code that you and I cannot understand or unpack. Think of Cipher looking at the Matrix datastream. You can flash a new hex file to your Macchiato at any time, and then put back the original if you prefer.
 
 To flash your synth, you will need the following:
 
