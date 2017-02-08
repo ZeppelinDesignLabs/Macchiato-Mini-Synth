@@ -15,10 +15,12 @@ The microcontroller is the little square chip to the right of the ISP header. It
 
 To flash your synth, you will need the following:
 
-* A USB Programmer such as USBTiny by Adafruit, or the AVR Pocket Programmer by Sparkfun. This is a piece of hardware that runs from your computer to your Mini-Synth. The programmer comes with a cable that connects to the ISP header. 
+* A USB Programmer such as AVR Pocket Programmer by Sparkfun (https://www.sparkfun.com/products/9825), or USBTiny by Adafruit (https://www.adafruit.com/products/46). This is a piece of hardware that runs from your computer to your Mini-Synth. The programmer comes with a cable that connects to the ISP header. 
 * A USB cable to connect your computer to your Programmer. This will probably be a Standard USB to Mini USB cable and might be included with your programmer.
 * A driver (software) to install on your computer, which enables it to recognize and communicate with the programmer. The programmer you buy should include detailed instructions for how to obtain and install this driver.
-* AVRDUDE (software) version 5.10. This is a free, simple command-line utility that sets up communication between your computer and your synth, and transfers (flashes) files to the microcontroller. Sparkfun has a fantastic tutorial explaining all this stuff. Find it here:
+* AVRDUDE version 5.10. This is a free, simple command-line software utility that sets up communication between your computer and your synth, and transfers (flashes) files to the microcontroller. Find it here:
+http://download.savannah.gnu.org/releases/avrdude/?C=M;O=A
+Sparkfun has a fantastic tutorial explaining all this stuff. Find it here:
 https://learn.sparkfun.com/tutorials/pocket-avr-programmer-hookup-guide/using-avrdude
 The initial release of Macchiato was flashed using AVRDUDE version 5.10. Newer (higher) versions should work as well, but if you run into errors, try installing version 5.10.
 * A Macchiato hex file. See #6 below. 
@@ -36,7 +38,7 @@ C:\Users\Yourname\Desktop\
 
 5) Verify that AVRDUDE is functioning and that it can identify your programmer. Follow the general procedure described in the Sparkfun article, adapted to your particular programmer.
 
-6) Download the binary (hex) file you are interested in from this GitHub page. You can navigate through the Macchiato-Mini-Synth repository to \Macchiato Control Software\ and look for files ending with .cpp.hex and download them individually; or go to the Releases page, pick a release that sounds promising, download the whole package, unpack it and find the .cpp.hex file.
+6) Download the binary (hex) file you are interested in from this GitHub page. You can navigate through the Macchiato-Mini-Synth repository to \Macchiato Control Software\ and look for files ending with .cpp.hex and download them individually; or go to the Releases page, pick a release that sounds promising, download the whole package, unpack it and find the .cpp.hex file. Place it in the same folder at avrdude.exe.
 
 7) Plug the programmer into the synth. Turn your synth off, turn the volume control all the way down, and connect your synth to your computer via your programmer cable. The MISO pin #1 is the top-left pin as you look at your synth. This pin will probably be identified with a dot on your programmer cable. Be careful not to attach the cable backwards. Your programmer probably has an option to send power through to the synthesizer. Turn it on. It will be a tiny switch on the programmer labelled something like "POWER TARGET". 
 
@@ -50,7 +52,7 @@ Your file location may look different, and you may have a different argument aft
 
 C:\Users\Yourname\Desktop\ avrdude -c usbtiny -p m644p -U flash:w:[filename].cpp.hex
 
-Be sure the [filename] argument exactly matches the name of the hex file we sent you. AVRDUDE should erase the chip, read the new hex file, flash it to the chip, read it back off the chip, compare it to the original, and then announce that everything is OK and Thank you. 
+Be sure the [filename] argument exactly matches the name of the hex file you downloaded. AVRDUDE should erase the chip, read the new hex file, flash it to the chip, read it back off the chip, compare it to the original, and then announce that everything is OK and Thank you. 
 Unplug the synth from the programmer. Turn it on, turn up the volume, and check out your new instrument!
 
 ## PROGRAMMING THE MACCHIATO
