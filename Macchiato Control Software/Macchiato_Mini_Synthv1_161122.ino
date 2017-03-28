@@ -3,29 +3,34 @@ The Macchiato Mini Synth v1.161122 by Zeppelin Design Labs, Chicago, Illinois. C
 The following program is the software that's on the micro-chip as it shipped from the Lab
 beginning January 1, 2017. 
 You are free to edit, add to, improve, destroy, ruin and otherwise modify this
-software in any way. It is covered by the Creative Commons - Attribution license. 
-If you modify this software and then share or distribute it in any way, you must
-keep the following attributions present:
+software in any way. It is covered by the Creative Commons - Attribution - NonCommercial - ShareAlike license. 
+If you modify this software and then share or distribute it in any way, you must:
+1) keep the following attributions present:
 Macchiato Mini Synth software by Stephen Collier Cass, Purdue University, Lafayette,Indiana,
 and Glen van Alkemade, Rose-Hulman Institute of Technology, Terre Haute, Indiana
 for Zeppelin Design Labs, Chicago, Illinois.
-Featuring the Mozzi Synth Library by Tim Barrass.
+www.zeppelindesignlabs.com
+Featuring the Mozzi Synth Library by Tim Barrass
+http://sensorium.github.io/Mozzi/
+2) not employ Mozzi for any commercial use without first working something out with its author.
+3) distribute your work under this same license:
+https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode
 
-Features of the synth software:
+Features of the Macchiato Mini-Synth software:
     2-note polyphony
     MIDI input
     13 Capacitive Touch Keys (1 octave)
     Output Waveshape Adjust (Sine, Triangle, Sawtooth, Square)
     Octave adjust (C2 --> C3,C3 --> C4, C4 --> C5, C5 --> C6)
-    Attack
-    Release
+    Attack Adjust
+    Release Adjust
     LFO waveshape Adjust  (Sine, Ramp,Sawtooth, Square)
    LFO Rate Adjust
    LPF Cutoff Frequency Adjust
-   LFO Depth
+   LFO Depth Adjust
 
 The Macchiato Mini Synth runs on an Atmel ATMega 644PA microcontroller. The 13 capacitive touch keys and 8 control pots occupy most of the 644PA’s inputs, but there are a few still available for incorporating additional features.
-Share your mods on our forum at www.zeppelindesignlabs.com and/or the Google group mozzi-users.
+Share your mods on our github repository, our forum at www.zeppelindesignlabs.com and/or the Google group mozzi-users.
 */ 
 
 //Included Header Files
@@ -49,10 +54,10 @@ Share your mods on our forum at www.zeppelindesignlabs.com and/or the Google gro
 //Oscillator Tables used for Low Frequency Oscillator (LFO)
 #include <tables/sin512_int8.h>
 #include <tables/saw512_int8.h>
-#include <tables/ramp512_int8.h>
+#include <tables/ramp512_int8.h>	// this file is not native to the mozzi library. We just transposed the saw file.
 #include <tables/square_no_alias512_int8.h>
 
-//Oscillator Functions declared for output waveforms, envelope 1 & 2.
+//Oscillator Functions declared for output waveforms, envelope 1 & 2. These correspond to the maximum two-note polyphony.
 Oscil <2048, AUDIO_RATE> aSin1(SIN2048_DATA);
 Oscil <2048, AUDIO_RATE> aTriangle1(TRIANGLE2048_DATA);
 Oscil <2048, AUDIO_RATE> aSaw1(SAW2048_DATA);
@@ -63,7 +68,7 @@ Oscil <2048, AUDIO_RATE> aTriangle2(TRIANGLE2048_DATA);
 Oscil <2048, AUDIO_RATE> aSaw2(SAW2048_DATA);
 Oscil <2048, AUDIO_RATE> aSquare2(SQUARE_NO_ALIAS_2048_DATA);
 
-//Oscillator Function declared/define for LFO1&2 waveform
+//Oscillator Function declared/define for LFO waveform
 Oscil <512, AUDIO_RATE> klfo_sin1(SIN512_DATA);
 Oscil <512, AUDIO_RATE> klfo_saw1(SAW512_DATA);
 Oscil <512, AUDIO_RATE> klfo_ramp1(RAMP512_DATA);
