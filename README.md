@@ -103,29 +103,40 @@ Note there are several different MIDI libraries in circulation. This is the one 
 Uncomment the line “#define AUDIO_MODE HIFI” (delete the “//”). 
 Comment out the line “#define AUDIO_MODE STANDARD_PLUS” (insert “//” at the start of the line). 
 Save mozzi_config.h.
-This changes the Mozzi system from Standard 8-bit audio mode to an enhanced HiFi mode. In Standard mode the microcontroller outputs an 8-bit signal on one output pin. In HiFi mode, it uses two output pins whose signals are merged downstream, to provide a much higher resolution signal. Clever, eh? You would suppose that's just like a 16-bit output signal, but actually it is customary to bit-shift the output to 14 bits, to provide a little headroom. 
 
-7) Copy the file ramp512_int8.h from Macchiato_Setup_Files\ to 
-Arduino\libraries\sensorium_Mozzi-1.x.x\tables\.
+(This changes the Mozzi system from Standard 8-bit audio mode to an enhanced HiFi mode. In Standard mode the microcontroller outputs an 8-bit signal on one output pin. In HiFi mode, it uses two output pins whose signals are merged downstream, to provide a much higher resolution signal. Clever, eh? You would suppose that's just like a 16-bit output signal, but actually it is customary to bit-shift the output to 14 bits, to provide a little headroom.)
+
+7) Download the file ramp512_int8.h from our Github page. In the Mozzi library, look for a folder called \tables\. it may look like this: 
+C:\Users\Yourname\Documents\Arduino\libraries\sensorium_Mozzi-1.x.x\tables\.
+Place the file in this folder.
 
 (Mozzi creates sound waves by keeping track of what time it is, then looking up the amplitude of a waveform in a simple table of numbers. Silence = 0, maximum amplitude = 127. Mozzi comes standard with several different waveform tables in a variety of resolutions. A sawtooth waveform comes standard, in which the amplitude rises steadily from silence to maximum over one cycle: think "whooP! whooP! whooP!". This custom Ramp waveform is just a backwards Saw: the amplitude falls steadily from maximum to silence over one cycle: think "Pow! Pow! Pow!". Used as an audio waveform, the two shapes sound about the same, but used as a low frequency oscillator, they create dramatically different effects. This file drives the Ramp effect on the LFO Shape control, knob #5.)
 
-The remaining steps add configuration information to your Arduino install so it will support a few more AtMega boards, including the 644PA at 16MHz. Taken together, they configure the 644PA specifically to run the Macchiato software. 
+8) And of course download the sketch, Release 1.1.0, Macchiato_Mini_Synthv1_170721.ino. Place the file in your Sketchbook folder.
 
-11) Navigate to the file Arduino\hardware\arduino\boards.txt and open the file for edit in Notepad++.
+The remaining steps add support for the 644PA microcontroller to your Arduino installation. 
 
-12) In Macchiato_Setup_Files\, open the file Atmel_Microcontroller_addition.txt in Notepad++. Copy and paste the file contents to the end of the boards.txt file. Save the boards.txt file. 
+9) Open the Arduino IDE.
+Open the File > Preferences menu item.
+Enter the following URL in Additional Boards Manager URLs:
+https://mcudude.github.io/MightyCore/package_MCUdude_MightyCore_index.json
+Separate the URLs using a comma ( , ) if you have more than one URL
+Open the Tools > Board > Boards Manager... menu item.
+Wait for the platform indexes to finish downloading.
+Scroll down until you see the MightyCore entry and click on it.
+Click Install.
+After installation is complete close the Boards Manager window.
 
-13) Copy the folder 1284p from Macchiato_Setup_Files\ to 
-Arduino\hardware\arduino\bootloaders\.
+10) The last step is to make an edit to the pinout file associated with the 644 board. The filename is pins_arduino.h, but there are a lot of files with that name in an Arduino installation. The one you need is in a path that looks something like this: 
+C:\Users\Yourname\appdata\Local\Arduino15\packages\mightycore\hardware\avr\{version number}\variants\standard\pins_arduino.h
+Try searching your appdata folder for \standard\pins_arduino.h. When you find it, open the file in Notepad++.
 
-14) Copy the file pins_arduino.h from Macchiato_Setup_Files\ to 
-Arduino\hardware\arduino\variants\.
+11) Find the TIMERS section. Comment out everything inside the braces, {/* bla bla bla */}. You may want to leave a note to yourself of when and why you made this edit. Save the pins_arduino.h file.
 
-You are almost there! If Arduino is running, close it and then re-start it. Look in the pulldown menu Tools > Board >. Look for and select the entry "Atmega644PA @ 16MHz w/Arduino as ISP".
+You are almost there! If Arduino is running, close it and then re-start it. Look in the pulldown menu Tools > Board > and make these selections: ATmega644, version A, clock 16MHz crystal, BOD 4.7, TOD Disabled, Arduino as ISP.
 
 ## TESTING
 
-Load a short sample sketch from the Mozzi github page and see if it will compile. Now load the Macchiato sketch and see if it will compile. If it does not, read the error messages carefully. They will likely reveal a missing or misplaced component somewhere. Compare the errors to these setup instructions. You will probably find you missed a step, or placed something in the wrong folder. Correct the error and try again until the Macchiato sketch compiles.
+Load a short sample sketch from the EXAMPLES folders in the Mozzi library and see if it will compile. Now load the Macchiato sketch and see if it will compile. (The first time you open this file, Arduino will ask if you want to move it into its own folder. Say Yes.) If it does not compile, read the error messages carefully. They will likely reveal a missing or misplaced component somewhere. (There are usually some compile warnings generated by the Mozzi library itself. You can ignore these.) Compare the errors to these setup instructions. Correct the error and try again until the Macchiato sketch compiles. Write to us on our forum if you get stuck.
 
 Congratulations! You are now ready to familiarize yourself with the possibilities of the Mozzi library and to develope your own custom Macchiato. For terrific Mozzi support, join the mozzi-users Google group. If you wish, feel free to create a branch off the Master branch here on Github. Either tweak the code as-is for enhanced performance, or use the Macchiato as a hardware platform to develop a completely different instrument. You have thirteen keys, eight knobs and even a few extra pins for input. Find out what you can do with them, and share it with the world!
