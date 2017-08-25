@@ -129,9 +129,9 @@ After installation is complete close the Boards Manager window.
 
 10) The last step is to make an edit to the pinout file associated with the 644 board. The filename is pins_arduino.h, but there are a lot of files with that name in an Arduino installation. The one you need is in a path that looks something like this: 
 C:\Users\Yourname\appdata\Local\Arduino15\packages\mightycore\hardware\avr\{version number}\variants\standard\pins_arduino.h
-Try searching your appdata folder for \standard\pins_arduino.h. When you find it, open the file in Notepad++.
+Try searching your appdata folder for \standard\pins_arduino.h. When you find it, create a backup and then open the .h file in Notepad++.
 
-11) Find the TIMERS section. Comment out everything inside the braces, {/* bla bla bla */}. You may want to leave a note to yourself of when and why you made this edit. Save the pins_arduino.h file.
+11) Find the TIMER section by searching for the string "timer". Delete everything inside the braces, {          }. You may want to leave a comment to yourself of when and why you made this edit, and where to find the backup. Save the pins_arduino.h file.
 
 You are almost there! If Arduino is running, close it and then re-start it. Look in the pulldown menu Tools > Board > and make these selections: ATmega644, version A, clock 16MHz crystal, BOD 4.7, TOD Disabled, Arduino as ISP.
 
