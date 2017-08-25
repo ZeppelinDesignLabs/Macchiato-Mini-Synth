@@ -131,7 +131,13 @@ After installation is complete close the Boards Manager window.
 C:\Users\Yourname\appdata\Local\Arduino15\packages\mightycore\hardware\avr\{version number}\variants\standard\pins_arduino.h
 Try searching your appdata folder for \standard\pins_arduino.h. When you find it, create a backup and then open the .h file in Notepad++.
 
-11) Find the TIMER section by searching for the string "timer". Delete everything inside the braces, {          }. You may want to leave a comment to yourself of when and why you made this edit, and where to find the backup. Save the pins_arduino.h file.
+11) Find the TIMER section under the AT644P__ board. The file version I am editing contains these lines:
+
+defined(__AVR_ATmega644P__)
+const uint8_t PROGMEM digital_pin_to_timer_PGM[] =
+{
+
+Delete everything inside the braces, {          }. You may want to leave a comment to yourself of when and why you made this edit, and where to find the backup. Save the pins_arduino.h file.
 
 You are almost there! If Arduino is running, close it and then re-start it. Look in the pulldown menu Tools > Board > and make these selections: ATmega644, version A, clock 16MHz crystal, BOD 4.7, TOD Disabled, Arduino as ISP.
 
