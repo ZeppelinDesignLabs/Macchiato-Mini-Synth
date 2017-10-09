@@ -1,5 +1,5 @@
 # Macchiato-Mini-Synth
-Mini Synth software sketches, executables, code development, new releases. ALWAYS USE LATEST VERSION! Current Release is 1.1.0; file names include v1_170721.
+Mini Synth software sketches, executables, code development, new releases. ALWAYS USE LATEST VERSION! Current Release is 1.1.0; file names include v1_171009.
 
 ## INTRODUCTION
 
@@ -37,7 +37,7 @@ C:\Users\Yourname\Desktop\
 
 5) Verify that AVRDUDE is functioning and that it can identify your programmer. Follow the general procedure described in the Sparkfun article, adapted to your particular programmer.
 
-6) Download the binary (hex) file you are interested in from this GitHub page. Go to the Releases page, pick a release that sounds promising, and download the .hex file. As of this writing (July 2017) we only recommend Release 1.1.0, filename Macchiato_Mini_Synthv1_170721.hex. Place the hex file in the same folder as avrdude.exe.
+6) Download the binary (hex) file you are interested in from this GitHub page. Go to the Releases page, pick a release that sounds promising, and download the .hex file. As of this writing (July 2017) we only recommend Release 1.1.0, filename Macchiato_Mini_Synthv1_171009.hex. Place the hex file in the same folder as avrdude.exe.
 
 7a) Plug the programmer into the synth. To do this, turn your synth off, turn the volume control all the way down, and connect your programmer cable to the ISP header. The MISO pin #1 is the top-left pin as you look at your synth. This pin will probably be identified with a dot on your programmer cable. Be careful not to attach the cable backwards. 
 
@@ -82,7 +82,7 @@ Older versions of Arduino and Mozzi have serious compatibility issues.
 * Notepad++ or another text editor for working with program files
 https://notepad-plus-plus.org/download/v7.3.1.html
 
-* Macchiato-Mini-Synth v1.1.0 from this GitHub Releases page. Download the sketch file, Macchiato_Mini_Synthv1_170721.ino. 
+* Macchiato-Mini-Synth v1.1.0 from this GitHub Releases page. Download the sketch file, Macchiato_Mini_Synthv1_171009.ino. 
 
 ### Let’s begin! 
 
@@ -112,7 +112,7 @@ Place the file in this folder.
 
 (Mozzi creates sound waves by keeping track of what time it is, then looking up the amplitude of a waveform in a simple table of numbers. Silence = 0, maximum amplitude = 127. Mozzi comes standard with several different waveform tables in a variety of resolutions. A sawtooth waveform comes standard, in which the amplitude rises steadily from silence to maximum over one cycle: think "whooP! whooP! whooP!". This custom Ramp waveform is just a backwards Saw: the amplitude falls steadily from maximum to silence over one cycle: think "Pow! Pow! Pow!". Used as an audio waveform, the two shapes sound about the same, but used as a low frequency oscillator, they create dramatically different effects. This file drives the Ramp effect on the LFO Shape control, knob #5.)
 
-8) And of course download the sketch, Release 1.1.0, Macchiato_Mini_Synthv1_170721.ino. Place the file in your Sketchbook folder.
+8) And of course download the sketch, Release 1.1.0, Macchiato_Mini_Synthv1_171009.ino. Place the file in your Sketchbook folder.
 
 The remaining steps add support for the 644PA microcontroller to your Arduino installation. 
 
