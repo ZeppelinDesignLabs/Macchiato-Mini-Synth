@@ -137,7 +137,7 @@ defined(__AVR_ATmega644P__)
 const uint8_t PROGMEM digital_pin_to_timer_PGM[] =
 {
 
-Delete everything inside the braces, {          }. You may want to leave a comment to yourself of when and why you made this edit, and where to find the backup. Save the pins_arduino.h file.
+Change everything inside the braces to "NOT_ON_TIMER" there should be several lines already like this so you can just copy those lines onto the ones that aren't. You may want to leave a comment to yourself of when and why you made this edit, and where to find the backup. Save the pins_arduino.h file.
 
 You are almost there! If Arduino is running, close it and then re-start it. Look in the pulldown menu Tools > Board > and make these selections: ATmega644, version A, clock 16MHz crystal, BOD 4.7, TOD Disabled, Arduino as ISP.
 
