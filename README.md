@@ -37,13 +37,11 @@ C:\Users\Yourname\Desktop\
 
 5) Verify that AVRDUDE is functioning and that it can identify your programmer. Follow the general procedure described in the Sparkfun article, adapted to your particular programmer.
 
-6) Download the binary (hex) file you are interested in from this GitHub page. Go to the Releases page, pick a release that sounds promising, and download the .hex file. As of this writing (July 2017) we only recommend Release 1.1.0, filename Macchiato_Mini_Synthv1_171009.hex. Place the hex file in the same folder as avrdude.exe.
+6) Download the binary (hex) file you are interested in from this GitHub page. Go to the Releases page, pick a release that sounds promising, and download the .hex file. As of this writing (October 2017) we only recommend Release 1.1.1, filename Macchiato_Mini_Synthv1_171009.hex. Place the hex file in the same folder as avrdude.exe.
 
 7a) Plug the programmer into the synth. To do this, turn your synth off, turn the volume control all the way down, and connect your programmer cable to the ISP header. The MISO pin #1 is the top-left pin as you look at your synth. This pin will probably be identified with a dot on your programmer cable. Be careful not to attach the cable backwards. 
 
 7b) Your programmer probably has an option to send power through to the synthesizer. Turn it on. It will be a tiny switch on the programmer labelled something like "POWER TARGET". 
-
-7c) Now plug the programmer into a USB port on your computer somewhere.
 
 8) Verify that communication is established between the computer and the synth by entering this command:
 
@@ -62,7 +60,7 @@ Unplug the synth from the programmer. Turn it on, turn up the volume, and check 
 
 The Macchiato Mini-Synth incorporates the Mozzi Sound Synthesis Library for Arduino by Tim Barrass. Mozzi and Macchiato are both covered by the Creative Commons / Attribution / Non-Commercial license. You are free to modify and redistribute the Macchiato software as long as you give proper credit to the contributing creators. (You cannot sell anything incorporating Mozzi without the permission of its creator Tim Barrass.) We hope you will use this GitHub page as the place to collaborate on new Macchiato software.
 
-The Macchiato source code (file suffix .ino) is posted here on Github on the Releases page. We suggest you only use the Latest Release, 1.1.0 as of this writing, July 2017.  We encourage you to develop your own Macchiato software and submit it here for inclusion in future releases. To write and compile Macchiato sketches in the Arduino environment requires a little bit of setup. 
+The Macchiato source code (file suffix .ino) is posted here on Github on the Releases page. We suggest you only use the Latest Release, 1.1.1 as of this writing, October 2017.  We encourage you to develop your own Macchiato software and submit it here for inclusion in future releases. To write and compile Macchiato sketches in the Arduino environment requires a little bit of setup. 
 
 NOTE: We assume you are already running Arduino version 1.8.3; you are familiar with AVRDUDE; and you are familiar with coding in C++.
 
@@ -95,7 +93,7 @@ C:\Users\Yourname\Documents\Arduino\libraries\
 
 4) If your installation of Arduino does not include the MIDI library, fetch it here:
 https://github.com/FortySevenEffects/
-Note there are several different MIDI libraries in circulation. This is the one that comes bundled with new versions of Arduino, and is the one we used to deveolop Macchiato 1.1.0. Put this in the same folder as the Mozzi library.
+Note there are several different MIDI libraries in circulation. This is the one that comes bundled with new versions of Arduino, and is the one we used to deveolop Macchiato 1.1.1. Put this in the same folder as the Mozzi library.
 
 5) Start Arduino and install or activate the Mozzi and MIDI libraries using Library Manager. 
 
@@ -112,7 +110,7 @@ Place the file in this folder.
 
 (Mozzi creates sound waves by keeping track of what time it is, then looking up the amplitude of a waveform in a simple table of numbers. Silence = 0, maximum amplitude = 127. Mozzi comes standard with several different waveform tables in a variety of resolutions. A sawtooth waveform comes standard, in which the amplitude rises steadily from silence to maximum over one cycle: think "whooP! whooP! whooP!". This custom Ramp waveform is just a backwards Saw: the amplitude falls steadily from maximum to silence over one cycle: think "Pow! Pow! Pow!". Used as an audio waveform, the two shapes sound about the same, but used as a low frequency oscillator, they create dramatically different effects. This file drives the Ramp effect on the LFO Shape control, knob #5.)
 
-8) And of course download the sketch, Release 1.1.0, Macchiato_Mini_Synthv1_171009.ino. Place the file in your Sketchbook folder.
+8) And of course download the sketch, Release 1.1.1, Macchiato_Mini_Synthv1_171009.ino. Place the file in your Sketchbook folder.
 
 The remaining steps add support for the 644PA microcontroller to your Arduino installation. 
 
@@ -137,7 +135,7 @@ defined(__AVR_ATmega644P__)
 const uint8_t PROGMEM digital_pin_to_timer_PGM[] =
 {
 
-Change everything inside the braces to "NOT_ON_TIMER" there should be several lines already like this so you can just copy those lines onto the ones that aren't. You may want to leave a comment to yourself of when and why you made this edit, and where to find the backup. Save the pins_arduino.h file.
+Change everything inside the braces to "NOT_ON_TIMER". There should be several lines already like this so you can just copy those lines onto the ones that aren't. You may want to leave a comment to yourself of when and why you made this edit, and where to find the backup. Save the pins_arduino.h file.
 
 You are almost there! If Arduino is running, close it and then re-start it. Look in the pulldown menu Tools > Board > and make these selections: ATmega644, version A, clock 16MHz crystal, BOD 4.7, TOD Disabled, Arduino as ISP.
 
