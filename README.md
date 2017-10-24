@@ -87,21 +87,19 @@ https://notepad-plus-plus.org/download/v7.3.1.html
 
 2) If you do not already have a good C++ editor, treat yourself to Notepad++. This is the software we used to edit the Macchiato sketches. https://notepad-plus-plus.org/download/v7.4.2.html
 
-3) Obtain and install the Mozzi library. Read the author’s release notes and installation instructions. Mozzi is a set of tools that fools an Arduino environment into handling audio signals, and tricks a microcontroller into behaving something like an oscillator. You will import the Mozzi tools into Arduino as a library. Place the Mozzi folder in your sketchbook folder, in the \libraries\ folder. The path will look something like this:
+3) Obtain and install the Mozzi library. Read the author’s release notes. Mozzi is a set of tools that tricks a microcontroller into behaving something like an oscillator. Place the Mozzi folder in your sketchbook\libraries\ folder. The path will look something like this:
 C:\Users\Yourname\Documents\Arduino\libraries\
 
 4) If your installation of Arduino does not include the MIDI library, fetch it here:
 https://github.com/FortySevenEffects/
-Note there are several different MIDI libraries in circulation. This is the one that comes bundled with new versions of Arduino, and is the one we used to deveolop Macchiato 1.1.1. Put this in the same folder as the Mozzi library.
+Note there are several different MIDI libraries in circulation. This is the one that comes bundled with new versions of Arduino, and is the one we used to deveolop Macchiato. Put this in the same folder as the Mozzi library.
 
-5) Start Arduino and install or activate the Mozzi and MIDI libraries using Library Manager. 
+5) Start Arduino 1.0.5 and install or activate the Mozzi and MIDI libraries. 
 
 6) Find (search for) the file mozzi_config.h and open it for edit in Notepad++.
 Uncomment the line “#define AUDIO_MODE HIFI” (delete the “//”). 
 Comment out the line “#define AUDIO_MODE STANDARD_PLUS” (insert “//” at the start of the line). 
 Save mozzi_config.h.
-
-(This changes the Mozzi system from Standard 8-bit audio mode to an enhanced HiFi mode. In Standard mode the microcontroller outputs an 8-bit signal on one output pin. In HiFi mode, it uses two output pins whose signals are merged downstream, to provide a much higher resolution signal. Clever, eh? You would suppose that's just like a 16-bit output signal, but actually it is customary to bit-shift the output to 14 bits, to provide a little headroom.)
 
 7) Download the file ramp512_int8.h from our Github page. In the Mozzi library, look for a folder called \tables\. it may look like this: 
 C:\Users\Yourname\Documents\Arduino\libraries\sensorium_Mozzi-1.x.x\tables\.
@@ -109,34 +107,21 @@ Place the file in this folder.
 
 (Mozzi creates sound waves by keeping track of what time it is, then looking up the amplitude of a waveform in a simple table of numbers. Silence = 0, maximum amplitude = 127. Mozzi comes standard with several different waveform tables in a variety of resolutions. A sawtooth waveform comes standard, in which the amplitude rises steadily from silence to maximum over one cycle: think "whooP! whooP! whooP!". This custom Ramp waveform is just a backwards Saw: the amplitude falls steadily from maximum to silence over one cycle: think "Pow! Pow! Pow!". Used as an audio waveform, the two shapes sound about the same, but used as a low frequency oscillator, they create dramatically different effects. This file drives the Ramp effect on the LFO Shape control, knob #5.)
 
-8) And of course download the sketch, Release 1.1.1, Macchiato_Mini_Synthv1_171009.ino. Place the file in your Sketchbook folder.
+8) And of course download the sketch, Latest Release .ino. Place the file in your Sketchbook folder.
 
 The remaining steps add support for the 644PA microcontroller to your Arduino installation. 
 
-9) Open the Arduino IDE.
-Open the File > Preferences menu item.
-Enter the following URL in Additional Boards Manager URLs:
-https://mcudude.github.io/MightyCore/package_MCUdude_MightyCore_index.json
-Separate the URLs using a comma ( , ) if you have more than one URL
-Open the Tools > Board > Boards Manager... menu item.
-Wait for the platform indexes to finish downloading.
-Scroll down until you see the MightyCore entry and click on it.
-Click Install.
-After installation is complete close the Boards Manager window.
+9) Navigate to the file Arduino\hardware\arduino\boards.txt and open the file for edit in Notepad++.
 
-10) The last step is to make an edit to the pinout file associated with the 644 board. The filename is pins_arduino.h, but there are a lot of files with that name in an Arduino installation. The one you need is in a path that looks something like this: 
-C:\Users\Yourname\appdata\Local\Arduino15\packages\mightycore\hardware\avr\{version number}\variants\standard\pins_arduino.h
-Try searching your appdata folder for \standard\pins_arduino.h. When you find it, create a backup and then open the .h file in Notepad++.
+In Macchiato_Setup_Files, open the file Atmel_Microcontroller_addition.txt in Notepad++. Copy and paste the file contents to the end of the boards.txt file. Save the boards.txt file.
 
-11) Find the TIMER section under the AT644P__ board. The file version I am editing contains these lines:
+Copy the folder 1284p from Macchiato_Setup_Files\ to Arduino\hardware\arduino\bootloaders.
 
-defined(__AVR_ATmega644P__)
-const uint8_t PROGMEM digital_pin_to_timer_PGM[] =
-{
+Navigate to Arduino\hardware\arduino\variants\ and create the subfolder \1284p\.
 
-Change everything inside the braces to "NOT_ON_TIMER". There should be several lines already like this so you can just copy those lines onto the ones that aren't. You may want to leave a comment to yourself of when and why you made this edit, and where to find the backup. Save the pins_arduino.h file.
+Copy the file pins_arduino.h from Macchiato_Setup_Files\ to Arduino\hardware\arduino\variants\1284p\.
 
-You are almost there! If Arduino is running, close it and then re-start it. Look in the pulldown menu Tools > Board > and make these selections: ATmega644, version A, clock 16MHz crystal, BOD 4.7, TOD Disabled, Arduino as ISP.
+You are almost there! If Arduino is running, close it and then re-start it. Look in the pulldown menu Tools > Board >. Look for and select the entry "Atmega644PA @ 16MHz w/Arduino as ISP".
 
 ## TESTING
 
