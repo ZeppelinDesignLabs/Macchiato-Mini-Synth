@@ -1,11 +1,11 @@
 # Macchiato-Mini-Synth
-Mini Synth software sketches, executables, code development, new releases. ALWAYS USE LATEST VERSION! Current Release is 1.1.0; file names include v1_171009.
+Mini Synth software sketches, executables, code development, new releases. ALWAYS USE LATEST RELEASE!
 
 ## INTRODUCTION
 
 The Macchiato Mini Synth by Zeppelin Design Labs is a nifty digital synthesizer that fits in the palm of your hand. The control software was developed in the Arduino environment, incorporating the Mozzi Sound Synthesis library by Tim Barrass. The software runs on an AtMega 644PA microcontroller.
 
-On this GitHub page, you can modify the original source code and propose changes to the Macchiato software. We may from time to time release updated and improved versions of the original software, or alternate versions with completely different functions and sounds. It is easy to edit the sketch (the program code, file ending in .ino) in Arduino verison 1.8.3. Detailed installation instructions are in the section PROGRAMMING THE MACCHIATO. Or you can just download new releases (the binary, or hex files, ending with .hex) and flash them to your Macchiato. This is covered in the following section.
+On this GitHub page, you can modify the original source code (files ending in .ino) and propose changes to the Macchiato software. We may from time to time release updates, or even alternate versions with  different functions and sounds. Currently, the sketch must be edited and compiled in Arduino 1.0.5r2. It will not run properly if compiled in later versions. It takes some setup of the IDE to get the sketch to compile properly. Instructions are in the section PROGRAMMING THE MACCHIATO. On the other hand, it's easy to just download new releases (the binary, or hex files, ending with .hex) and flash them to your Macchiato. This is covered in the following section.
 
 ## FLASHING A BINARY TO YOUR MACCHIATO
 
@@ -37,50 +37,49 @@ C:\Users\Yourname\Desktop\
 
 5) Verify that AVRDUDE is functioning and that it can identify your programmer. Follow the general procedure described in the Sparkfun article, adapted to your particular programmer.
 
-6) Download the binary (hex) file you are interested in from this GitHub page. Go to the Releases page, pick a release that sounds promising, and download the .hex file. As of this writing (October 2017) we only recommend Release 1.1.1, filename Macchiato_Mini_Synthv1_171009.hex. Place the hex file in the same folder as avrdude.exe.
+6) Download the latest binary (hex) file from this GitHub page. Go to the Releases page and look for Latest Release, and download the .hex file. Place the hex file in the same folder as avrdude.exe.
 
-7a) Plug the programmer into the synth. To do this, turn your synth off, turn the volume control all the way down, and connect your programmer cable to the ISP header. The MISO pin #1 is the top-left pin as you look at your synth. This pin will probably be identified with a dot on your programmer cable. Be careful not to attach the cable backwards. 
+7) Plug the programmer into the synth. To do this, turn your synth off, turn the volume control down, and connect your programmer cable to the ISP header. The MISO pin #1 is the top-left pin as you look at your synth. This pin will probably be identified with a dot on your programmer, or a line on one wire in the cable. Be careful not to attach the cable backwards. 
 
-7b) Your programmer probably has an option to send power through to the synthesizer. Turn it on. It will be a tiny switch on the programmer labelled something like "POWER TARGET". 
+8) Your programmer probably has an option to send power through to the synthesizer. Turn it on. It will be a tiny switch on the programmer labelled something like "POWER TARGET". 
 
-8) Verify that communication is established between the computer and the synth by entering this command:
+9) Verify that communication is established between the computer and the synth by entering this command:
 
 C:\Users\Yourname\Desktop\ avrdude -c usbtiny -p m644p
 
 Your file location may look different, and you may have a different argument after –c if you are using a different programmer. AVRDUDE should display a “Fuses OK” message. If not, study the Sparkfun article to troubleshoot.	
 
-9) You are ready to upload your new hex file. Enter this command:
+10) You are ready to upload your new hex file. Enter this command:
 
-C:\Users\Yourname\Desktop\ avrdude -c usbtiny -p m644p -U flash:w:[filename].ino.hex
+C:\Users\Yourname\Desktop\ avrdude -c usbtiny -p m644p -V -B 1 -U flash:w:[filename].cpp.hex
 
-Be sure the [filename] argument exactly matches the name of the hex file you downloaded. AVRDUDE should erase the chip, read the new hex file, flash it to the chip, read it back off the chip, compare it to the original, and then announce that everything is OK and Thank you. 
-Unplug the synth from the programmer. Turn it on, turn up the volume, and check out your new instrument!
+Be sure the [filename] argument exactly matches the name of the hex file you downloaded. AVRDUDE should erase the chip, read the new hex file, flash it to the chip, and then announce that everything is OK and Thank you. 
+
+11) Unplug the synth from the programmer. Turn it on, turn up the volume, and check out your new instrument!
 
 ## PROGRAMMING THE MACCHIATO
 
-The Macchiato Mini-Synth incorporates the Mozzi Sound Synthesis Library for Arduino by Tim Barrass. Mozzi and Macchiato are both covered by the Creative Commons / Attribution / Non-Commercial license. You are free to modify and redistribute the Macchiato software as long as you give proper credit to the contributing creators. (You cannot sell anything incorporating Mozzi without the permission of its creator Tim Barrass.) We hope you will use this GitHub page as the place to collaborate on new Macchiato software.
+The Macchiato Mini-Synth incorporates the Mozzi Sound Synthesis Library for Arduino by Tim Barrass. Mozzi and Macchiato are both covered by the Creative Commons / Attribution / Non-Commercial license. You are free to modify and redistribute the Macchiato software as long as you 1) distribute it under the same license terms, 2) give proper credit to the contributing creators, and 3) don't sell your derivative work without contacting the authors first. We hope you will use this GitHub page as the place to collaborate on new Macchiato software.
 
-The Macchiato source code (file suffix .ino) is posted here on Github on the Releases page. We suggest you only use the Latest Release, 1.1.1 as of this writing, October 2017.  We encourage you to develop your own Macchiato software and submit it here for inclusion in future releases. To write and compile Macchiato sketches in the Arduino environment requires a little bit of setup. 
+The Macchiato source code (file suffix .ino) is posted here on Github on the Releases page. Only use the Latest Release. We encourage you to develop your own Macchiato software and submit it here for inclusion in future releases. To write and compile Macchiato sketches in the Arduino environment requires a little bit of setup. 
 
-NOTE: We assume you are already running Arduino version 1.8.3; you are familiar with AVRDUDE; and you are familiar with coding in C++.
+NOTE: We assume you are already familiar with Arduino, AVRDUDE, and coding in C++.
+NOTE: Macchiato Software only compiles properly in Arduino 1.0.5r2, using Mozzi library version 1.0.2. Efforts to update to newer compatibility have not yet been successful.
 
 WHAT YOU WILL NEED
 
-Here are the software versions we used to compile the latest Macchiato software, version 1.1.0. The original release required considerable setup to compile in Arduino; the latest version is easy. PLEASE LET US KNOW if you discover specific version compatibilities or incompatibilities so we can develop a compatibility chart!
-
-* Arduino IDE 1.8.3 
+* Arduino IDE 1.0.5r2 
 https://www.arduino.cc/en/main/OldSoftwareReleases 
 * AVRDUDE v 5.10 or later (usually bundled with Arduino.) 
 http://download.savannah.gnu.org/releases/avrdude/?C=M;O=A
 
-* Mozzi library v1.0.3rc6.
-https://github.com/sensorium/Mozzi/releases
-Older versions of Arduino and Mozzi have serious compatibility issues.
+* Mozzi library v1.0.2.
+https://github.com/sensorium/Mozzi/releases/tag/v1.0.2
 
 * Notepad++ or another text editor for working with program files
 https://notepad-plus-plus.org/download/v7.3.1.html
 
-* Macchiato-Mini-Synth v1.1.0 from this GitHub Releases page. Download the sketch file, Macchiato_Mini_Synthv1_171009.ino. 
+* Macchiato-Mini-Synth sketch ( .ino) Latest Release from this GitHub page.
 
 ### Let’s begin! 
 
