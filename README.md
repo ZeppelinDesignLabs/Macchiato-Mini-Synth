@@ -79,7 +79,9 @@ https://github.com/sensorium/Mozzi/releases/tag/v1.0.2
 * Notepad++ or another text editor for working with program files
 https://notepad-plus-plus.org/download/v7.3.1.html
 
-* Macchiato-Mini-Synth sketch ( .ino) Latest Release from this GitHub page.
+* Macchiato Setup Files folder, from this repository 
+
+* Macchiato-Mini-Synth sketch ( .ino) Latest Release from this repository.
 
 ### Let’s begin! 
 
@@ -107,21 +109,21 @@ Place the file in this folder.
 
 (Mozzi creates sound waves by keeping track of what time it is, then looking up the amplitude of a waveform in a simple table of numbers. Silence = 0, maximum amplitude = 127. Mozzi comes standard with several different waveform tables in a variety of resolutions. A sawtooth waveform comes standard, in which the amplitude rises steadily from silence to maximum over one cycle: think "whooP! whooP! whooP!". This custom Ramp waveform is just a backwards Saw: the amplitude falls steadily from maximum to silence over one cycle: think "Pow! Pow! Pow!". Used as an audio waveform, the two shapes sound about the same, but used as a low frequency oscillator, they create dramatically different effects. This file drives the Ramp effect on the LFO Shape control, knob #5.)
 
-8) And of course download the sketch, Latest Release .ino. Place the file in your Sketchbook folder.
+8) Place your Latest Release Macchiato sketch (suffix .ino) in your Sketchbook folder.
 
 The remaining steps add support for the 644PA microcontroller to your Arduino installation. 
 
 9) Navigate to the file Arduino\hardware\arduino\boards.txt and open the file for edit in Notepad++.
 
-In Macchiato_Setup_Files, open the file Atmel_Microcontroller_addition.txt in Notepad++. Copy and paste the file contents to the end of the boards.txt file. Save the boards.txt file.
+10) In Macchiato_Setup_Files, open the file Atmel_Microcontroller_addition.txt in Notepad++. Copy and paste the file contents to the end of the boards.txt file. Save the boards.txt file.
 
-Copy the folder 1284p from Macchiato_Setup_Files\ to Arduino\hardware\arduino\bootloaders.
+11) Copy the folder 1284p from Macchiato_Setup_Files\ to Arduino\hardware\arduino\bootloaders.
 
-Navigate to Arduino\hardware\arduino\variants\ and create the subfolder \1284p\.
+12) Navigate to Arduino\hardware\arduino\variants\ and create the subfolder \1284p\.
 
-Copy the file pins_arduino.h from Macchiato_Setup_Files\ to Arduino\hardware\arduino\variants\1284p\.
+Copy the file pins_arduino.h from Macchiato_Setup_Files\ to Arduino\hardware\arduino\variants\1284p\. WARNING! DO NOT USE ANY FILE OTHER THAN THE ONE INSIDE THE  Macchiato_Setup_Files FOLDER! There is a more recent file in the repository that WILL NOT WORK. It was associated with an obsolete release. We can't figure out how to remove it.
 
-You are almost there! If Arduino is running, close it and then re-start it. Look in the pulldown menu Tools > Board >. Look for and select the entry "Atmega644PA @ 16MHz w/Arduino as ISP".
+13) You are almost there! If Arduino is running, close it and then re-start it. Look in the pulldown menu Tools > Board >. Look for and select the entry "Atmega644PA @ 16MHz w/Arduino as ISP".
 
 ## TESTING
 
