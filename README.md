@@ -15,20 +15,27 @@ The microcontroller is the little square chip to the right of the ISP header. It
 
 To flash your synth, you will need the following:
 
-* A USB Programmer such as AVR Pocket Programmer by Sparkfun (https://www.sparkfun.com/products/9825), or USBTiny by Adafruit (https://www.adafruit.com/products/46). This is a piece of hardware that runs from your computer to your Mini-Synth. The programmer comes with a cable that connects to the ISP header. 
-* A USB cable to connect your computer to your Programmer. This will probably be a Standard USB to Mini USB cable and might be included with your programmer.
-* A driver (software) to install on your computer, which enables it to recognize and communicate with the programmer. The programmer you buy should include detailed instructions for how to obtain and install this driver.
-* AVRDUDE version 5.10 or later. This is a free, simple command-line software utility that sets up communication between your computer and your synth, and transfers (flashes) files to the microcontroller. It is included as part of any Arduino installation, or you can find it here:
+* A USB Programmer such as USBTiny by Adafruit (https://www.adafruit.com/products/46); or you can get the self-same programmer we used to flash your synth from our web store (https://zeppelindesignlabs.com/product/usbtiny-programmer/). This is a piece of hardware that runs from your computer to your Mini-Synth. The programmer comes with a cable that connects to the ISP header. 
+
+* A USB cable to connect your computer to your Programmer. This will probably be a Standard USB to Mini USB cable and might be included with your programmer. (The programmer we sell comes with everything you need.)
+
+* A driver (software) to install on your computer, which enables it to recognize and communicate with the programmer. The programmer you buy should include detailed instructions for how to obtain and install this driver. The drivers for our USBTiny programmer are available here for Windows: https://rayshobby.net/dead-simple-driver-installation-for-usbasp-and-usbtiny-on-windows/
+and here for Mac: http://macappstore.org/libusb/
+
+* AVRDUDE version 5.10 or later. This is a free, simple command-line software utility that sets up communication between your computer and your synth, and transfers (flashes) files to the microcontroller. It is included as part of any Arduino installation, but some users have found it tricky to flash our .hex files from within Arduino. You may want to add an independent avrdude installation on your desktop. Look here:
 http://download.savannah.gnu.org/releases/avrdude/?C=M;O=A
+Look for the file with the highest version number that looks like this: avrdude-[version-number]-mingw32.zip
+This file will contain avrdude.exe and avrdude.conf. Place them together in a convenient place on your machine, like the desktop.
 Sparkfun has a fantastic tutorial explaining all this stuff. Find it here:
 https://learn.sparkfun.com/tutorials/pocket-avr-programmer-hookup-guide/using-avrdude
+
 * A Macchiato hex file. See #6 below. 
 
 To flash a hex file:
 
 1) Install the programmer’s driver.
 
-2) Install AVRDUDE. It is a wee little thing and we like to install it to the user’s desktop, but you can put it anywhere you like. (You will have to place the hex file in the same folder as the AVRDUDE executable.)
+2) Install AVRDUDE. Place avrdude.exe and avrdude.conf together someplace convenient. We like to install it to the user’s desktop, but you can put it anywhere you like. (You will have to place the hex file in the same folder as the AVRDUDE executable.)
 
 3) Plug your programmer into a USB port on your computer.
 
