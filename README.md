@@ -39,7 +39,7 @@ https://github.com/sensorium/Mozzi/releases
 * Notepad++ or another text editor for working with program files
 https://notepad-plus-plus.org/download/v7.3.1.html
 
-* Macchiato Setup Files folder, from this repository 
+* Two files from the Macchiato Setup Files folder, in this repository: RCPoll.h and ramp512_int8.h 
 
 * Macchiato-Mini-Synth sketch ( *.ino) Latest Release from this repository.
 
@@ -63,20 +63,28 @@ Uncomment the line “#define AUDIO_MODE HIFI” (delete the “//”).
 Comment out the line “#define AUDIO_MODE STANDARD_PLUS” (insert “//” at the start of the line). 
 Save mozzi_config.h.
 
-7) Download the file ramp512_int8.h from our Github page. In the Mozzi library, look for a folder called \tables\. it may look like this: 
+7) In the Mozzi library, look for a folder called \tables\. it may look like this: 
 C:\Users\Yourname\Documents\Arduino\libraries\sensorium_Mozzi-1.x.x\tables\.
-Place the file in this folder.
+Place the file ramp512_int8.h in this folder.
 
-(Mozzi creates sound waves by keeping track of what time it is, then looking up the amplitude of a waveform in a simple table of numbers. Silence = 0, maximum amplitude = 127. Mozzi comes standard with several different waveform tables in a variety of resolutions. A sawtooth waveform comes standard, in which the amplitude rises steadily from silence to maximum over one cycle: think "whooP! whooP! whooP!". This custom Ramp waveform is just a backwards Saw: the amplitude falls steadily from maximum to silence over one cycle: think "Pow! Pow! Pow!". Used as an audio waveform, the two shapes sound about the same, but used as a low frequency oscillator, they create dramatically different effects. This file drives the Ramp effect on the LFO Shape control, knob #5.)
+8) In the Mozzi library, look for the file RCpoll.h. Overwrite it with the file with the same name which you obtained from Github.
 
-8) Place your Latest Release Macchiato sketch (suffix .ino) in your Sketchbook folder.
+9) Place your Latest Release Macchiato sketch (suffix .ino) in your Sketchbook folder.
 
 The remaining steps add support for the 644PA microcontroller to your Arduino installation. 
 
-1) NOTE: This procedure is being drafted 3/11/2019. Stay tuned for final details.
-  DRAFT: Arduino 1.8.4 includes a fancy BOARDS manager that can automatically find and install support for a gazillion microcontrollers. Use the Board manager to add support for the ATmega 644PA.
+1) Arduino 1.8.4 includes a fancy BOARDS manager that can automatically find and install support for a gazillion microcontrollers. Use the Board manager to add the MightyCore library. This will provide support for the ATmega 644PA.
   
-2) Close and restart Arduino. Look in the pulldown menu Tools > Board >. Look for and select the entry "Atmega644PA @ 16MHz w/Arduino as ISP".
+2) Close and restart Arduino. Under "Tools" make the following selections:
+      Board:  "Atmega644"
+      Variant: "644P / 644PA"
+      BOD: "2.7v"
+      Pinout: "Standard"
+      Clock: "16 MHz external"
+      Compiler LTO: "Enabled"
+      Port: "COM1"
+      -----------------
+      Programmer: "USBTinyISP(MightyCore)"
 
 ## TESTING
 
