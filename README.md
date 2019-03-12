@@ -5,28 +5,26 @@ Mini Synth software sketches, executables, code development, new releases. ALWAY
 
 The Macchiato Mini Synth by Zeppelin Design Labs is a nifty digital synthesizer that fits in the palm of your hand. The control software was developed in the Arduino environment, incorporating the Mozzi Sound Synthesis library by Tim Barrass. The software runs on an AtMega 644PA microcontroller.
 
-On this GitHub page, you can modify the original source code (files ending in .ino) and propose changes to the Macchiato software. We may from time to time release updates, or even alternate versions with  different functions and sounds. The latest releases, v1.1.2 and v1.1.3, were compiled using Arduion v1.8.4. There's just a little setup needed to get your IDE to properly compile your customized sketch. Instructions are in the section PROGRAMMING THE MACCHIATO. On the other hand, it is incredibly simple to just download new releases (the binary, or hex files, ending with .hex) and flash them to your Macchiato. This is covered in the following section.
+On this GitHub page, you can modify the original source code (files ending in .ino) and propose changes to the Macchiato software. We may from time to time release updates, or even alternate versions with  different functions and sounds. Releases v1.1.2 and higher were compiled using Arduio IDE v1.8.4. There's just a little setup needed to get your IDE to properly compile your customized sketch. Instructions follow in the section PROGRAMMING THE MACCHIATO. On the other hand, it is incredibly simple to just download new releases (the binary, or hex files, ending with .hex) and flash them to your Macchiato. This is covered in the next section.
 
 ## FLASHING A BINARY TO YOUR MACCHIATO
 
-Look under the hood of your Macchiato cabinet. See that little cluster of six pins sticking up to the right of the Zeppelin logo? These are the In-System Programming (ISP) header pins that allow you to communicate with the microcontroller that runs your synth. You use an inexpensive device called a programmer that connects the ISP header to a USB port on your PC. This allows you to upload, or "flash", new control software to your synth.
-
-The microcontroller is the little square chip to the right of the ISP header. It is an ATmega644PA microcontroller by Atmel. It belongs to a class of microcontrollers broadly called AVRs. (Atmel says AVR does not stand for anything in particular.) The actual program on the microcontroller is in the form of a "binary" or “hex” file – a jumble of machine code that you and I cannot understand or easily unpack. Think of Cipher looking at the Matrix datastream. You can flash a new hex file to your Macchiato at any time. With our new Updater App, this is incredibly simple.
+Look under the hood of your Macchiato cabinet. See that little cluster of six pins sticking up to the right of the Zeppelin logo? These are the In-System Programming (ISP) header pins that allow you to communicate with the microcontroller that runs your synth. The microcontroller is the little square chip to the right of the ISP header. It is an ATmega644PA  by Atmel. An inexpensive device called a programmer connects the ISP header to a USB port on your PC. This allows you to upload, or "flash", new control software to your synth.  With our new Updater App, this is incredibly simple.
 
 To flash your synth, you will need the following:
 
-* A USB Programmer such as USBTiny by Adafruit (https://www.adafruit.com/products/46); or you can get the self-same programmer we used to flash your synth from our web store (https://zeppelindesignlabs.com/product/usbtiny-programmer/). This is a piece of hardware that runs from your computer to your Mini-Synth. The programmer comes with a cable that connects to the ISP header. 
+* A USB Programmer such as USBTiny by Adafruit (https://www.adafruit.com/products/46); or you can get the self-same programmer we used to flash your synth from our web store (https://zeppelindesignlabs.com/product/usbtiny-programmer/). This piece of hardware runs from your computer to your Mini-Synth.
 
-* Zeppelin Updater App (https://www.zeppelindesignlabs.com/wp-content/uploads/docs/Zeppelin_Setup.msi), hosted on our own server. Install  this little guy and follow the simple instructions on our web page (https://zeppelindesignlabs.com/product/zdl-updater/). Once it is installed, there is a detailed Help file inside the Updater. The Updater itself contains all of our currently published hex files.
+* Zeppelin Updater App (https://www.zeppelindesignlabs.com/wp-content/uploads/docs/Zeppelin_Setup.msi), hosted on our own server. To install, follow the simple instructions on our web page, on the "Installation" tab (https://zeppelindesignlabs.com/product/zdl-updater/). Once it is installed, there is a detailed Help file inside the Updater. The Updater itself contains all of our currently published hex files.
 
 ## PROGRAMMING THE MACCHIATO
 
-The Macchiato Mini-Synth incorporates the Mozzi Sound Synthesis Library for Arduino by Tim Barrass. Mozzi and Macchiato are both covered by the Creative Commons / Attribution / Non-Commercial license. You are free to modify and redistribute the Macchiato software as long as you 1) distribute it under the same license terms, 2) give proper credit to the contributing creators, and 3) don't sell your derivative work without contacting the authors first. We hope you will use this GitHub page as the place to collaborate on new Macchiato software.
+The Macchiato Mini-Synth incorporates the Mozzi Sound Synthesis Library for Arduino by Tim Barrass. Mozzi and Macchiato are both covered by the Creative Commons / Attribution / Non-Commercial license. You are free to modify and redistribute the Macchiato software as long as you 1) distribute it under the same license terms, 2) give proper credit to the contributing creators, and 3) don't sell your derivative work without contacting the authors first. 
 
-The Macchiato source code (file suffix .ino) is posted here on Github on the Releases page. Only use the Latest Release. We encourage you to develop your own Macchiato software and submit it here for inclusion in future releases. To write and compile Macchiato sketches in the Arduino environment requires a little bit of setup. 
+The Macchiato source code (file suffix .ino) is posted here on Github on the Releases page. Only use the Latest Release. To write and compile Macchiato sketches in the Arduino environment requires a little bit of setup. 
 
 NOTE: We assume you are already familiar with Arduino, AVRDUDE, and coding in C++.
-NOTE: Macchiato Software versions 1.1.2 and 1.1.3 compile with Arduino 1.8.4. Earlier versions will only compile with Arduino 1.0.5r2 with considerable setup. The earlier sketches and binaries exist only as legacy releases. We do not support them at all.
+NOTE: Macchiato Software versions 1.1.2 and higher compile with Arduino 1.8.4. Earlier versions will only compile with Arduino 1.0.5r2 with considerable setup. The earlier sketches and binaries exist only as legacy releases. We do not support them at all.
 
 WHAT YOU WILL NEED
 
@@ -35,21 +33,21 @@ https://www.arduino.cc/en/main/OldSoftwareReleases
 * AVRDUDE v 5.10 or later (usually bundled with Arduino.) 
 http://download.savannah.gnu.org/releases/avrdude/?C=M;O=A
 
-* Mozzi library v1.0.2.
-https://github.com/sensorium/Mozzi/releases/tag/v1.0.2
+* Mozzi library v1.0.2 or higher
+https://github.com/sensorium/Mozzi/releases
 
 * Notepad++ or another text editor for working with program files
 https://notepad-plus-plus.org/download/v7.3.1.html
 
 * Macchiato Setup Files folder, from this repository 
 
-* Macchiato-Mini-Synth sketch ( .ino) Latest Release from this repository.
+* Macchiato-Mini-Synth sketch ( *.ino) Latest Release from this repository.
 
 ### Let’s begin! 
 
 1) If your installation of Arduino includes AVRDUDE version 5.10 or higher, skip to 3. Otherwise, install / upgrade to the latest version of AVRDUDE. 
 
-2) If you do not already have a good C++ editor, treat yourself to Notepad++. This is the software we used to edit the Macchiato sketches. https://notepad-plus-plus.org/download/v7.4.2.html
+2) If you do not already have a good C++ editor, treat yourself to Notepad++. This is the software we used to edit the Macchiato sketches. https://notepad-plus-plus.org/download/
 
 3) Obtain and install the Mozzi library. Read the author’s release notes. Mozzi is a set of tools that tricks a microcontroller into behaving something like an oscillator. Place the Mozzi folder in your sketchbook\libraries\ folder. The path will look something like this:
 C:\Users\Yourname\Documents\Arduino\libraries\
