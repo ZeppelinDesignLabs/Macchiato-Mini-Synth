@@ -73,24 +73,19 @@ Place the file ramp512_int8.h in this folder.
 
 The remaining steps add support for the 644PA microcontroller to your Arduino installation. 
 
-1. Arduino 1.8.4 includes a fancy BOARDS manager that can automatically find and install support for a gazillion microcontrollers. Use the Board manager to add the MightyCore library. This will provide support for the ATmega 644PA.
+1. Arduino 1.6.4 and higher includes a fancy BOARDS manager that can automatically find and install support for a gazillion microcontrollers. The MightyCore package, available on Github, will add support for the 644 and many other boards. Go to this Github page:
+https://github.com/MCUdude/MightyCore#boards-manager-installation
+and follow the simple instructions to install MightyCore using your Board Manager.
   
 2. Close and restart Arduino. Under "Tools" make the following selections:
 
 Board:  "Atmega644"
-
 Variant: "644P / 644PA"
-
 BOD: "2.7v"
-
 Pinout: "Standard"
-
 Clock: "16 MHz external"
-
 Compiler LTO: "Enabled"
-
 Port: "COM1"
-
 Programmer: "USBTinyISP(MightyCore)"
 
 ## TESTING
